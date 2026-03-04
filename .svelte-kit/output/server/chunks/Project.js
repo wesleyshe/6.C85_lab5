@@ -46,23 +46,23 @@ const projects = [
   {
     title: "A3: Visualization Critique and Redesign",
     year: 2024,
-    image: "/image/1.jpg",
-    description: "A redesign focused on accessibility, annotation, and reducing misleading encodings.",
-    story: "Critiquing someone else's chart made it easier to notice my own bad habits. I rewrote labels, simplified color, and restructured the narrative order for readability. The biggest lesson was that better design often means removing elements."
+    image: "/image/7.jpg",
+    description: "A management simulation where I had to act as the boss and run a chaotic team.",
+    story: "This was the semester I discovered that being in charge is mostly solving tiny disasters all day. I handled deadlines, delegated tasks, and kept morale from collapsing before demos. By the end, I stopped trying to control everything and focused on making clear decisions fast."
   },
   {
     title: "A4: Persuasive and Deceptive Visualization",
     year: 2025,
-    image: "/image/2.jpg",
-    description: "A paired exercise showing how framing and scale choices can alter interpretation.",
-    story: "Building both honest and deceptive versions of the same graphic was uncomfortable but useful. It made me much more explicit about my assumptions and encoding choices. I now document design decisions because persuasion is always present."
+    image: "/image/8.jpg",
+    description: "A game-focused project analyzing strategy, reaction time, and player decision patterns.",
+    story: "I used my favorite video games as the dataset and tracked where players hesitated, rushed, and improvised. Watching repeated runs made strategy look less like luck and more like pattern recognition under pressure. It ended up being one of the most fun projects because every chart felt like replay analysis."
   },
   {
     title: "Final Project Prototype",
     year: 2026,
-    image: "/image/3.jpg",
-    description: "An early interactive prototype combining narrative scrollytelling with open exploration.",
-    story: "This prototype pulled together everything from data collection to story structure. The first version was too dense, so I split it into guided narrative and free exploration modes. It feels like the point where isolated skills became a coherent workflow."
+    image: "/image/9.jpg",
+    description: "A fictional scenario project about planning a coordinated shopping mall invasion with an army.",
+    story: "The narrative framed the mall as contested territory and mapped how different squads moved through entrances, escalators, and food court chokepoints. I built timelines for each phase so the reader could follow the operation from first breach to full control. It was absurd on purpose, but it let me practice large-scale sequencing and spatial storytelling."
   }
 ];
 const Project_svelte_svelte_type_style_lang = "";
