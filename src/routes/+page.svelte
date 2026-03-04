@@ -1,9 +1,27 @@
 <script>
-  import { base } from '$app/paths';
+  import { onMount } from "svelte";
+  import { base } from "$app/paths";
   import projects from "$lib/projects.json";
   import reading from "$lib/reading.json";
   import Project from "$lib/Project.svelte";
   import ReadingItem from "$lib/ReadingItem.svelte";
+
+  let githubData = null;
+  let loading = true;
+  let error = null;
+
+  onMount(async () => {
+    try {
+      const response = await fetch("https://api.github.com/users/wesleyshe");
+      if (!response.ok) {
+        throw new Error(`GitHub API request failed (${response.status})`);
+      }
+      githubData = await response.json();
+    } catch (err) {
+      error = err;
+    }
+    loading = false;
+  });
 </script>
 
 <h1>Ikea Shark</h1>
@@ -32,6 +50,26 @@
 </p>
 <img src="{base}/image/ikea%20shark.jpg" alt="my face" />
 
+{#if loading}
+  <p>Loading GitHub stats...</p>
+{:else if error}
+  <p>Something went wrong: {error.message}</p>
+{:else}
+  <section class="github-stats">
+    <h2>GitHub Stats</h2>
+    <dl>
+      <dt>Followers</dt>
+      <dd>{githubData.followers}</dd>
+      <dt>Following</dt>
+      <dd>{githubData.following}</dd>
+      <dt>Public Repos</dt>
+      <dd>{githubData.public_repos}</dd>
+      <dt>Public Gists</dt>
+      <dd>{githubData.public_gists}</dd>
+    </dl>
+  </section>
+{/if}
+
 <h2>Latest Projects</h2>
 <div class="projects highlights">
   {#each projects.slice(0, 3) as p}
@@ -57,5 +95,35 @@
     display: flex;
     flex-direction: column;
     gap: 1.25em;
+  }
+  .github-stats {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 0.5rem;
+    background: color-mix(in oklch, var(--color-accent), canvas 93%);
+  }
+  .github-stats h2 {
+    margin: 0 0 1rem;
+  }
+  .github-stats dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(6rem, 1fr));
+    gap: 0.25rem 1rem;
+  }
+  .github-stats dt {
+    grid-row: 1;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0.8;
+  }
+  .github-stats dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
   }
 </style>

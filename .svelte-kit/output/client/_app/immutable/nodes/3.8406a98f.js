@@ -1,0 +1,4 @@
+import{s as f,n as s}from"../chunks/scheduler.1c1a1096.js";import{S as d,i as x,g as c,s as _,h as u,x as b,c as v,k as h,a as o,f as i}from"../chunks/index.8296ea29.js";function C(p){let t,m="Contact",l,e,r=`<label>Your email:
+    <input name="email" type="email"/></label> <label>Subject:
+    <input name="subject"/></label> <label>Message:
+    <textarea name="body"></textarea></label> <button>Send</button>`;return{c(){t=c("h1"),t.textContent=m,l=_(),e=c("form"),e.innerHTML=r,this.h()},l(a){t=u(a,"H1",{"data-svelte-h":!0}),b(t)!=="svelte-tbczl2"&&(t.textContent=m),l=v(a),e=u(a,"FORM",{action:!0,method:!0,"data-svelte-h":!0}),b(e)!=="svelte-gtslbr"&&(e.innerHTML=r),this.h()},h(){h(e,"action","mailto:wesleys@mit.edu"),h(e,"method","GET")},m(a,n){o(a,t,n),o(a,l,n),o(a,e,n)},p:s,i:s,o:s,d(a){a&&(i(t),i(l),i(e))}}}class M extends d{constructor(t){super(),x(this,t,null,C,f,{})}}export{M as component};
