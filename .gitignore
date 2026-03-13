@@ -8,3 +8,6 @@ build/
 # System/editor noise
 .DS_Store
 npm-debug.log*
+
+# Generated code analysis (must be generated at build time)
+static/loc.csv
