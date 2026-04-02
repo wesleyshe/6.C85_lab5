@@ -226,6 +226,12 @@
   circle {
     transition: 200ms;
     cursor: pointer;
+    outline: none;
+  }
+
+  circle:focus-visible {
+    stroke: black;
+    stroke-width: 2;
   }
 
   circle:hover {
@@ -234,6 +240,10 @@
 
   circle.selected {
     fill: var(--color-accent, #e45);
+  }
+
+  circle.selected:hover {
+    fill: orange;
   }
 
   .stats {
