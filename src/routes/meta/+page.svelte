@@ -165,8 +165,7 @@
           cx={xScale(commit.datetime)}
           cy={yScale(commit.hourFrac)}
           r={rScale(commit.totalLines)}
-          fill="steelblue"
-          fill-opacity="0.6"
+          style="fill: {clickedCommits.includes(commit) ? 'red' : 'steelblue'}"
           class:selected={clickedCommits.includes(commit)}
           on:mouseenter={evt => dotInteraction(index, evt)}
           on:mouseleave={evt => dotInteraction(index, evt)}
@@ -227,6 +226,7 @@
     transition: 200ms;
     cursor: pointer;
     outline: none;
+    fill-opacity: 0.6;
   }
 
   circle:focus-visible {
@@ -235,15 +235,7 @@
   }
 
   circle:hover {
-    fill: orange;
-  }
-
-  circle.selected {
-    fill: var(--color-accent, #e45);
-  }
-
-  circle.selected:hover {
-    fill: orange;
+    fill: orange !important;
   }
 
   .stats {
