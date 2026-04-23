@@ -91,7 +91,7 @@
 
   async function dotInteraction(index, evt) {
     let hoveredDot = evt.target;
-    if (evt.type === "mouseenter") {
+    if (evt.type === "mouseenter" || evt.type === "focus") {
       hoveredIndex = index;
       if (commitTooltip) {
         tooltipPosition = await computePosition(hoveredDot, commitTooltip, {
@@ -102,7 +102,7 @@
           ],
         });
       }
-    } else if (evt.type === "mouseleave") {
+    } else if (evt.type === "mouseleave" || evt.type === "blur") {
       hoveredIndex = -1;
     } else if (evt.type === "click") {
       let commit = commits[index];
@@ -219,11 +219,15 @@
           class:selected={selectedCommits.includes(commit)}
           on:mouseenter={evt => dotInteraction(index, evt)}
           on:mouseleave={evt => dotInteraction(index, evt)}
+          on:focus={evt => dotInteraction(index, evt)}
+          on:blur={evt => dotInteraction(index, evt)}
           on:click={evt => dotInteraction(index, evt)}
           on:keyup={evt => evt.key === 'Enter' && dotInteraction(index, evt)}
           tabindex="0"
           role="button"
-          aria-label="Commit {commit.id}"
+          aria-label="Commit {commit.id} on {commit.datetime?.toLocaleString('en', { dateStyle: 'medium', timeStyle: 'short' })} by {commit.author}, {commit.totalLines} lines"
+          aria-describedby="commit-tooltip"
+          aria-haspopup="true"
         />
       {/each}
     </g>
@@ -231,7 +235,7 @@
     <g transform="translate({usableArea.left}, 0)" bind:this={yAxis} />
   </svg>
 
-  <dl class="info tooltip" hidden={hoveredIndex === -1} bind:this={commitTooltip}
+  <dl class="info tooltip" id="commit-tooltip" role="tooltip" hidden={hoveredIndex === -1} bind:this={commitTooltip}
       style="top: {tooltipPosition.y}px; left: {tooltipPosition.x}px">
     <dt>Commit</dt>
     <dd><a href="{hoveredCommit.url}" target="_blank">{hoveredCommit.id}</a></dd>
